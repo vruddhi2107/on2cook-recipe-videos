@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>On2Cook — One Machine, Six Ways to Cook</title>
+<title>See how it Cooks!</title>
+<link rel="icon" href="assets/on2cook favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -38,37 +40,73 @@
   .progress-bar{width:100%;height:100%;background:var(--red);transform-origin:left;transform:scaleX(0);}
 
   /* ---------------- nav ---------------- */
-  nav{
-    position:fixed;top:3px;left:0;right:0;z-index:900;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:26px 6vw;transition:padding .35s ease, background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
-  }
-  nav.scrolled{
-    padding:16px 6vw;background:rgba(255,255,255,0.7);backdrop-filter:blur(14px);
-    box-shadow:0 1px 0 var(--line);
-  }
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
+  /* ---------------- nav ---------------- */
+nav{
+  position:fixed;
+  top:3px;
+  left:0;
+  right:0;
+  z-index:900;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-  .logo-img {
-    width: 120px;      /* Adjust size */
-    height: 120px;
-    object-fit: contain;
-  }
+  /* was: 26px 6vw */
+  padding:12px 6vw;
+
+  transition:padding .35s ease, background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+}
+
+nav.scrolled{
+  /* was: 16px 6vw */
+  padding:8px 6vw;
+
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 var(--line);
+}
+
+.nav-logo{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow:visible;
+}
+
+.logo-img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+}
+
+.nav-links{
+  display:flex;
+  gap:34px;
+  font-size:14px;
+  font-weight:500;
+}
+
+.nav-cta{
+  font-size:13px;
+  font-weight:600;
+  background:var(--ink);
+  color:#fff;
+
+  /* was: 11px 22px */
+  padding:8px 18px;
+
+  border-radius:30px;
+  text-decoration:none;
+}
   .nav-logo .dot{width:8px;height:8px;background:var(--red);border-radius:50%;}
   .nav-links{display:flex;gap:34px;font-size:14px;font-weight:500;}
   .nav-links a{text-decoration:none;position:relative;padding-bottom:3px;}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--red);transition:width .3s ease;}
   .nav-links a:hover::after{width:100%;}
-  .nav-cta{
+  /* .nav-cta{
     font-size:13px;font-weight:600;background:var(--ink);color:#fff;padding:11px 22px;border-radius:30px;
     text-decoration:none;
-  }
+  } */
   @media(max-width:820px){ .nav-links{display:none;} }
 
   /* ---------------- buttons ---------------- */
@@ -81,12 +119,26 @@
   .btn-ghost{background:transparent;}
 
   /* ================= HERO ================= */
-  .hero{
-    visibility:hidden;
-    position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-    padding:120px 6vw 60px;overflow:hidden;
-  }
-  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;}
+  .hero {
+  position: relative;
+  min-height: 100vh;
+  background: url("assets/hero1.png") center center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+}
+  
+  .hero-grid {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 40px;
+  align-items: center;
+}
   .hero-shape{position:absolute;border-radius:50%;pointer-events:none;}
   .hero-shape.s1{width:200px;height:200px;border:1.5px solid var(--red);top:8%;right:4%;opacity:0.5;}
   .hero-shape.s3{width:70px;height:70px;border:1.5px solid var(--ink);opacity:0.15;top:16%;left:4%;}
@@ -101,7 +153,7 @@
   }
   .hero-headline .accent{color:var(--red);}
   .hero-sub{
-    margin-top:28px;font-size:17px;color:var(--ink-muted);max-width:460px;line-height:1.7;
+    margin-top:28px;font-size:17px;color:var(--ink-muted);max-width:460px;line-height:1.7
   }
   .hero-ctas{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
   .hero-scrollcue{
@@ -115,13 +167,13 @@
   }
   @keyframes cuemove{0%{top:-100%;}50%{top:0;}100%{top:100%;}}
 
-  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:660px;}
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:760px;}
   .hero-visual-glow{
     position:absolute;width:90%;height:90%;border-radius:50%;
     background:radial-gradient(circle,var(--bg-soft) 0%, transparent 72%);
   }
   .hero-device-img{
-    position:relative;width:100%;max-width:600px;height:auto;
+    position:relative;width:100%;max-width:700px;height: auto;
     filter:drop-shadow(0 30px 60px rgba(17,17,17,0.16));
     will-change:transform;
   }
@@ -145,7 +197,7 @@
 
   /* ================= SECTION SHARED ================= */
   section{position:relative;}
-  .section-pad{padding:150px 6vw;}
+  .section-pad{padding:20px 6vw;}
   .section-pad.soft{background:var(--bg-soft);}
   .eyebrow{
     font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);
@@ -386,81 +438,63 @@
   <img src="assets/on2cooklogo-nobg.png" alt="ON2COOK Logo" class="logo-img">
 </div>
   <div class="nav-links">
-    <a href="#story">Story</a>
+    <!-- <a href="#story">Story</a> -->
     <!-- <a href="#functions">Functions</a> -->
-    <a href="#recipes">Recipes</a>
-    <a href="#contact">Contact</a>
+    <!-- <a href="#recipes">How it Works</a> -->
+    <!-- <a href="#contact">Contact</a> -->
   </div>
   <a class="nav-cta" href="#recipes">Watch now</a>
 </nav>
 
 <section class="hero" id="top">
-  <div class="hero-shape s1"></div>
-  <div class="hero-shape s3"></div>
+  <!-- <div class="hero-shape s1"></div>
+  <div class="hero-shape s3"></div> -->
   <div class="hero-grid">
     <div class="hero-copy">
       <div class="hero-eyebrow">Combination cooking, filmed</div>
       <h1 class="hero-headline" id="heroHeadline">One machine. <span class="accent">Six</span> ways to cook.</h1>
       <p class="hero-sub">On2Cook runs microwave and induction at once — bake, steam, grill, microwave, induction and fry, in the same pan.</p>
-      <div class="hero-ctas">
+      <!-- <div class="hero-ctas">
         <a href="#recipes" class="btn btn-primary magnetic">Watch the recipes</a>
         <a href="#story" class="btn btn-ghost magnetic">How it works</a>
-      </div>
+      </div> -->
       <!-- <div class="hero-scrollcue"><div class="stick"></div>Scroll</div> -->
     </div>
     <div class="hero-visual">
-      <div class="hero-visual-glow"></div>
-      <div class="hero-ring"></div>
+      <!-- <div class="hero-visual-glow"></div> -->
+      <!-- <div class="hero-ring"></div>
       <div class="hero-steam s-a"></div>
       <div class="hero-steam s-b"></div>
-      <div class="hero-steam s-c"></div>
-      <img class="hero-device-img" id="heroDeviceImg" src="assets/on2cook-device.png" alt="On2Cook combination cooking device with steel pot and steam bottle" loading="eager">
+      <div class="hero-steam s-c"></div> -->
+      <!-- <img class="hero-device-img" id="heroDeviceImg" src="assets/hero.png" alt="On2Cook combination cooking device with steel pot and steam bottle" loading="eager"> -->
     </div>
   </div>
 </section>
-
-<section class="story" id="story">
-  <div class="story-head">
-    <div class="eyebrow">Combination Cooking</div>
-<!-- <h2 class="reveal-mask">Top heat. Bottom heat. Perfect results in a single pass.</h2> -->
-    <!-- <p class="reveal">Microwave energy works the food from above while induction drives the pan from below — at the same time, in the same vessel. That's the patented: Combination Cooking™.</p> -->
-  </div>
-  <div class="story-image-wrap reveal-img">
-    <img src="assets/combination-cooking.jpg" alt="On2Cook Combination Cooking — cutaway render showing the overhead microwave module and induction base working on food at once" loading="lazy">
-  </div>
-  <!-- <p class="story-caption reveal">Patent granted in the US, UK, and India.</p> -->
-
-  <!-- <div class="story-notes stagger-group">
-    <div class="story-note stagger-item"><span class="tag">From above</span><p>The overhead microwave module brings food to temperature fast, without drying it out.</p></div>
-    <div class="story-note stagger-item"><span class="tag">From below</span><p>The induction base runs the pan itself — the sear, the crust, the char, controlled to the degree.</p></div>
-    <div class="story-note stagger-item"><span class="tag">Together</span><p>Run at once, most recipes finish in under 70% of the usual time, at roughly 40% less cooking cost.</p></div>
-  </div> -->
-</section>
-
-
 
 <section class="section-pad" id="recipes">
   <div class="recipes-head">
     <div>
-      <div class="eyebrow">On camera</div>
+      <div class="eyebrow">Watch how it cooks!</div>
       <h2 class="section-head reveal-mask">Watch every function in action.</h2>
-      <p class="section-lead reveal">Real recipes, filmed on the device. Filter by function to see exactly how each one runs.</p>
+      <!-- <p class="section-lead reveal">Real recipes, cooked on the device. Filter by function to see exactly how each one of them is made.</p> -->
     </div>
   </div>
-  <div class="chips">
+  <!-- <div class="chips">
     <button class="chip active" data-fn="all">All</button>
     <button class="chip" data-fn="bake">Bake</button>
     <button class="chip" data-fn="steam">Steam</button>
     <button class="chip" data-fn="grill">Grill</button>
     <button class="chip" data-fn="microwave">Microwave</button>
     <button class="chip" data-fn="induction">Induction</button>
-    <button class="chip" data-fn="fry">Fry</button>
+    <button class="chip" data-fn="fry">Fry</button> -->
+    <!-- <button class="chip" data-fn="fry">Fry</button> -->
+
   </div>
   <p class="recipe-count" id="recipeCount"></p>
   <div class="r-grid" id="recipeGrid"></div>
 </section>
 
-<section class="section-pad soft facts">
+<!-- <section class="section-pad soft facts">
   <div class="facts-shape f1"></div>
   <div class="facts-shape f2"></div>
   <div class="eyebrow">On2Cook, by the numbers</div>
@@ -470,14 +504,14 @@
     <div class="fact stagger-item"><div class="fact-num" data-count="2">0</div><div class="fact-label">Energies working at the same time</div></div>
     <div class="fact stagger-item"><div class="fact-num" data-count="500" data-suffix="+">0</div><div class="fact-label">Commercial kitchens running On2Cook</div></div>
   </div>
-</section>
+</section> -->
 
 <section class="cta" id="contact">
   <div class="cta-shape"></div>
   <div class="eyebrow" style="justify-content:center">Bring your kitchen up to speed</div>
-  <h2 class="reveal-mask">See it cook before<br>it lands in your kitchen.</h2>
-  <p class="reveal">Browse the full recipe library or get in touch to see On2Cook running live.</p>
-  <a href="#recipes" class="btn btn-primary magnetic">Watch the recipes</a>
+  <h2 class="reveal-mask">See it cook before<br> it powers your kitchen.</h2>
+  <p class="reveal">Explore chef-crafted recipes designed for On2Cook and discover what's possible.</p>
+<a href="https://on2cook-recipe-finder.vercel.app/" class="btn btn-primary magnetic">Explore Recipes</a>
 </section>
 
 <footer>
