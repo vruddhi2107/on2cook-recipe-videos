@@ -195,28 +195,24 @@
 
   @media(max-width:900px){
     .hero-grid{grid-template-columns:1fr;}
-    .hero-visual{height:360px;order:-1;}
-    .hero-device-img{max-width:300px;}
-  }
-  @media(max-width:900px){
     /* hero1.png has the device sitting in the right third of a wide landscape
-       shot — center-center cover crops that off on narrow screens. Bias the
-       crop right so the device stays in frame. */
-    .hero{background-position: 78% center;}
-  }
-  @media(max-width:480px){
-    .hero{padding:0 var(--pad-x);background-position: 82% center;position:relative;}
+       shot — center-center cover crops that off on narrow/tablet screens.
+       Bias the crop right so the device stays in frame. */
+    .hero{background-position: 78% center;position:relative;}
     .hero::before{
       content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-      background:linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.75) 55%, rgba(255,255,255,0.15) 100%);
+      background:linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.78) 52%, rgba(255,255,255,0.2) 100%);
     }
-    .hero-headline{font-size:clamp(30px,9vw,44px);}
-    .hero-sub{font-size:15px;max-width:100%;}
-    /* hero-visual currently has no image inside it — an empty box here just
-       eats vertical space and shoves the copy toward the bottom of the screen.
-       Drop it on phones and let the copy sit centered in the hero. */
+    /* hero-visual has no image inside it right now — an empty box here just
+       eats vertical space and pushes the copy toward the bottom of the screen,
+       and once the copy overlaps the photo it needs the scrim above to read. */
     .hero-visual{display:none;}
     .hero-grid{min-height:calc(100svh - 90px);align-content:center;}
+  }
+  @media(max-width:480px){
+    .hero{padding:0 var(--pad-x);background-position: 82% center;}
+    .hero-headline{font-size:clamp(30px,9vw,44px);}
+    .hero-sub{font-size:15px;max-width:100%;}
   }
 
   /* ================= SECTION SHARED (uniform vertical rhythm) ================= */
