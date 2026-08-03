@@ -35,7 +35,7 @@ const RECIPE_VIDEOS = [
 },
 {
   title: 'Perfect Chicken Biryani Every Time',
-  function: 'microwave',
+  function: 'microwave + induction',
   thumbnail: 'assets/recipes/biryani.png',
   videoUrl: 'https://player.vimeo.com/video/1212002332',
   // chef: '',
@@ -59,7 +59,7 @@ const RECIPE_VIDEOS = [
 },
 {
   title: 'Perfect Moong Dal Halwa Every Time',
-  function: 'induction',
+  function: 'sauteing',
   thumbnail: 'assets/recipes/halwa.png',
   videoUrl: 'https://player.vimeo.com/video/1212003081',
   // chef: '',
@@ -67,7 +67,7 @@ const RECIPE_VIDEOS = [
 },
 {
   title: 'The Perfect Gravy Every Time',
-  function: 'induction',
+  function: 'sauteing',
   thumbnail: 'assets/recipes/gravy.png',
   videoUrl: 'https://player.vimeo.com/video/1212003270',
   // chef: '',
