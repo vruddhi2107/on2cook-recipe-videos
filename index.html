@@ -8,18 +8,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Single, basic type family used everywhere (weights only differentiate roles) -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600&display=swap" rel="stylesheet">
+<!-- On2Cook Brand Fonts: Montserrat (titles) + Barlow (body, DIN Next style) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#FFFFFF;
-    --bg-soft:#F7F7F7;
-    --ink:#111111;
-    --ink-muted:#6B6B6B;
-    --red:#E63946;
-    --red-dim:#C72A37;
+    --bg-soft:#F5F5F5;
+    --ink:#000000;
+    --ink-muted:#555555;
+    --red:#ff0000;
+    --red-dim:#cc0000;
     --cream:#FDF8EF;
-    --line:rgba(17,17,17,0.10);
+    --line:rgba(0,0,0,0.10);
 
     /* ---- unified spacing scale (used by every section, mobile → desktop) ---- */
     --pad-x: clamp(20px, 6vw, 64px);      /* horizontal section padding */
@@ -31,11 +31,11 @@
   body{
     background:var(--bg);
     color:var(--ink);
-    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-family:'Barlow','DIN Next','DINNextLTPro',system-ui,-apple-system,sans-serif;
     overflow-x:hidden;
     width:100%;
   }
-  h1,h2,h3,.display{font-family:'Inter',system-ui,-apple-system,sans-serif;letter-spacing:-0.02em;}
+  h1,h2,h3,.display{font-family:'Montserrat',system-ui,-apple-system,sans-serif;letter-spacing:-0.02em;}
   a{color:inherit;}
   img{max-width:100%;}
   ::selection{background:var(--red);color:#fff;}
@@ -77,8 +77,8 @@
   }
 
   .logo-img{
-    width:64px;
-    height:64px;
+    width:88px;
+    height:88px;
     object-fit:contain;
   }
 
@@ -105,13 +105,13 @@
   .nav-links a:hover::after{width:100%;}
   @media(max-width:820px){ .nav-links{display:none;} }
   @media(max-width:420px){
-    .logo-img{width:52px;height:52px;}
+    .logo-img{width:68px;height:68px;}
     .nav-cta{font-size:12px;padding:8px 14px;}
   }
 
   /* ---------------- buttons ---------------- */
   .btn{
-    display:inline-flex;align-items:center;gap:8px;font-family:'Inter';font-weight:600;font-size:14px;
+    display:inline-flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:600;font-size:14px;
     padding:15px 28px;border-radius:32px;cursor:pointer;border:1.5px solid var(--ink);
     text-decoration:none;background:transparent;color:var(--ink);
   }
@@ -300,23 +300,23 @@
   .fn-badge{
     position:absolute;top:20px;left:20px;width:38px;height:38px;z-index:3;
     border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-family:'Inter',sans-serif;font-weight:800;font-size:13px;color:#fff;
+    font-family:'Montserrat',sans-serif;font-weight:800;font-size:13px;color:#fff;
     border:1.5px solid rgba(255,255,255,0.6);background:rgba(17,17,17,0.35);backdrop-filter:blur(4px);
   }
   .fn-cardbody{
     position:absolute;left:0;right:0;bottom:0;z-index:3;padding:26px 28px 28px;
   }
   .fn-name{
-    font-family:'Inter',sans-serif;font-style:italic;font-weight:600;color:#fff;
+    font-family:'Montserrat',sans-serif;font-style:italic;font-weight:600;color:#fff;
     font-size:clamp(28px,3.4vw,40px);letter-spacing:-0.01em;line-height:1.05;
   }
   .fn-pill{
     display:inline-block;margin-top:14px;padding:6px 16px;border-radius:20px;border:1px solid rgba(255,255,255,0.5);
-    font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;
+    font-family:'Barlow','DIN Next',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.06em;
     text-transform:uppercase;color:rgba(255,255,255,0.85);
   }
   .fn-desc{
-    font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,0.88);
+    font-family:'Barlow','DIN Next',sans-serif;font-size:14.5px;line-height:1.65;color:rgba(255,255,255,0.88);
     max-height:0;opacity:0;overflow:hidden;margin-top:0;max-width:340px;
     transition:max-height .4s ease, opacity .3s ease, margin-top .4s ease;
   }
@@ -332,7 +332,7 @@
 
   .fn-hint{
     display:flex;align-items:center;gap:10px;margin-top:28px;padding:0 var(--pad-x);
-    font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);
+    font-family:'Barlow','DIN Next',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-muted);
   }
   .fn-hint .fn-hint-line{width:26px;height:1px;background:var(--ink-muted);}
 
@@ -356,9 +356,9 @@
   .chip{
     padding:10px 18px;border-radius:24px;border:1.5px solid var(--line);background:transparent;
     font-size:13px;font-weight:600;color:var(--ink-muted);cursor:pointer;
-    font-family:'Inter',sans-serif;
+    font-family:'Barlow','DIN Next',sans-serif;
   }
-  .chip.active{border-color:var(--red);color:var(--red);background:rgba(230,57,70,0.06);}
+  .chip.active{border-color:var(--red);color:var(--red);background:rgba(255,0,0,0.06);}
   .recipe-count{font-size:13px;color:var(--ink-muted);margin-bottom:20px;}
   .r-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;}
   .r-card{
@@ -378,7 +378,7 @@
   .r-play svg{width:52px;height:52px;}
   .r-body{padding:18px 20px 22px;}
   .r-fn{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
-  .r-title{font-family:'Inter',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;line-height:1.35;}
+  .r-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;margin-bottom:12px;line-height:1.35;}
   .r-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-muted);padding-top:12px;border-top:1px solid var(--line);}
   .r-card.ghost{cursor:default;border-style:dashed;}
   .r-card.ghost:hover{transform:none;box-shadow:none;}
@@ -423,7 +423,7 @@
   .facts-shape.f2{width:180px;height:180px;bottom:-40px;left:8%;}
   .facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:var(--space-block);position:relative;}
   .fact{border-left:2px solid var(--ink);padding-left:20px;}
-  .fact-num{font-family:'Inter',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);color:var(--red);}
+  .fact-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);color:var(--red);}
   .fact-label{font-size:14px;color:var(--ink-muted);margin-top:6px;}
   @media(max-width:820px){ .facts-grid{grid-template-columns:1fr;gap:26px;} }
 
@@ -441,14 +441,135 @@
   }
 
   /* ================= FOOTER ================= */
-  footer{
-    padding:var(--space-block) var(--pad-x);border-top:1px solid var(--line);
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  .site-footer{
+    background:var(--red);
+    color:#fff;
+    padding: clamp(48px,8vw,80px) var(--pad-x) 0;
+    font-family:'Barlow','DIN Next',sans-serif;
   }
-  footer p{font-size:13px;color:var(--ink-muted);}
-  footer a{font-size:13px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
-  @media(max-width:480px){
-    footer{flex-direction:column;align-items:flex-start;gap:10px;text-align:left;}
+
+  /* top columns grid */
+  .footer-top{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom: clamp(20px,3vw,36px);
+  }
+
+  .footer-col-title{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.04em;
+    margin-bottom:18px;
+    color:#fff;
+  }
+
+  .footer-col ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .footer-col ul li a{
+    color:rgba(255,255,255,0.88);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:400;
+    transition:color .2s ease;
+  }
+  .footer-col ul li a:hover{color:#fff;}
+
+  /* office addresses */
+  .footer-offices{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+  .footer-office-city{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    margin-bottom:4px;
+    color:#fff;
+  }
+  .footer-office-addr{
+    font-size:13px;
+    color:rgba(255,255,255,0.82);
+    line-height:1.6;
+  }
+
+  /* social icons */
+  .footer-socials{
+    display:flex;
+    gap:12px;
+    margin-top:2px;
+  }
+  .footer-social-btn{
+    width:40px;height:40px;
+    border-radius:50%;
+    border:1.5px solid rgba(255,255,255,0.5);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    text-decoration:none;
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .footer-social-btn:hover{background:rgba(255,255,255,0.18);border-color:#fff;}
+  .footer-social-btn svg{width:18px;height:18px;fill:#fff;}
+
+  /* footer logo */
+  .footer-logo-wrap{
+    padding:clamp(16px,2.5vw,28px) 0 clamp(14px,2vw,24px);
+    border-top:1px solid rgba(255,255,255,0.2);
+    margin-top:clamp(16px,2.5vw,28px);
+  }
+  .footer-logo-img{
+    height:clamp(56px,9vw,100px);
+    width:auto;
+    display:block;
+    /* invert to white so it reads on red background */
+    filter:brightness(0) invert(1);
+  }
+
+  /* bottom bar */
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.2);
+    padding:18px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-bottom p{
+    font-size:13px;
+    color:rgba(255,255,255,0.7);
+  }
+  .footer-bottom-links{
+    display:flex;
+    gap:0;
+    align-items:center;
+  }
+  .footer-bottom-links a{
+    font-size:13px;
+    color:rgba(255,255,255,0.8);
+    text-decoration:none;
+    transition:color .2s ease;
+  }
+  .footer-bottom-links a:hover{color:#fff;}
+  .footer-bottom-links span{
+    color:rgba(255,255,255,0.4);
+    margin:0 12px;
+  }
+
+  @media(max-width:900px){
+    .footer-top{grid-template-columns:1fr 1fr;gap:28px;}
+  }
+  @media(max-width:560px){
+    .footer-top{grid-template-columns:1fr;gap:28px;}
+    .footer-wordmark{font-size:clamp(52px,16vw,100px);}
+    .footer-bottom{flex-direction:column;align-items:flex-start;gap:10px;}
   }
 
   @media(prefers-reduced-motion:reduce){
@@ -542,9 +663,72 @@
 <a href="https://on2cook-recipe-finder.vercel.app/" class="btn btn-primary magnetic">Explore Recipes</a>
 </section>
 
-<footer>
-  <p>On2Cook India Pvt Ltd — Ahmedabad, Gujarat</p>
-  <a href="https://on2cook.com" target="_blank" rel="noopener">on2cook.com ↗</a>
+<footer class="site-footer">
+
+  <!-- Top columns -->
+  <div class="footer-top">
+
+    <!-- Navigation -->
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <ul>
+        <li><a href="https://on2cook.com/about" target="_blank" rel="noopener">About us</a></li>
+        <li><a href="https://on2cook.com/services" target="_blank" rel="noopener">Services</a></li>
+        <li><a href="https://on2cook.com/industries" target="_blank" rel="noopener">Industries</a></li>
+        <li><a href="https://on2cook.com/blog" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="https://on2cook.com/contact" target="_blank" rel="noopener">Contact us</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul>
+        <li><a href="https://on2cook.com" target="_blank" rel="noopener">Cloud Kitchen</a></li>
+        <li><a href="https://on2cook.com" target="_blank" rel="noopener">Cafe</a></li>
+        <li><a href="https://on2cook.com" target="_blank" rel="noopener">QSR</a></li>
+        <li><a href="https://on2cook.com" target="_blank" rel="noopener">Restaurant</a></li>
+        <li><a href="https://on2cook.com" target="_blank" rel="noopener">Reserations Operations</a></li>
+        <li><a href="https://on2cook.com" target="_blank" rel="noopener">Analytics</a></li>
+      </ul>
+    </div>
+
+    <!-- Socials -->
+    <div class="footer-col">
+      <div class="footer-col-title">Socials</div>
+      <div class="footer-socials">
+        <!-- LinkedIn -->
+        <a class="footer-social-btn" href="https://www.linkedin.com/company/on2cook" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a class="footer-social-btn" href="https://www.facebook.com/on2cook" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a class="footer-social-btn" href="https://www.instagram.com/on2cook" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /footer-top -->
+
+  <!-- Logo -->
+  <div class="footer-logo-wrap">
+    <img src="assets/on2cooklogo-nobg.png" alt="On2Cook" class="footer-logo-img">
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 On2Cook. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="https://on2cook.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>
+      <span>|</span>
+      <a href="https://on2cook.com/terms" target="_blank" rel="noopener">Terms and Conditions</a>
+    </div>
+  </div>
+
 </footer>
 
 <div class="lightbox" id="lightbox">
