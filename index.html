@@ -252,14 +252,36 @@
       }
     }
 
-    /* ================= INTRO (replaces the old hero) ================= */
+    /* ================= INTRO (compact hero banner) =================
+       Keeps the hero photo, but short enough that the first row of video
+       thumbnails is visible without scrolling. */
     .intro {
-      /* top padding clears the fixed nav pill */
-      padding: clamp(104px, 14vw, 150px) var(--pad-x) 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: clamp(300px, 44vh, 420px);
+      padding: clamp(96px, 12vw, 120px) var(--pad-x) clamp(32px, 5vw, 52px);
+      background: url("assets/hero1.png") center center / cover no-repeat;
+    }
+
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.55) 45%, rgba(255, 255, 255, 0) 75%);
+    }
+
+    .intro>* {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
     }
 
     .intro-headline {
-      font-size: clamp(34px, 6vw, 84px);
+      font-size: clamp(32px, 5.4vw, 76px);
       font-weight: 900;
       line-height: 1.04;
     }
@@ -274,6 +296,28 @@
       letter-spacing: -0.01em;
     }
 
+    @media(max-width:900px) {
+      /* device sits in the right third of hero1.png — keep it in frame */
+      .intro {
+        background-position: 78% center;
+      }
+
+      .intro::before {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.78) 52%, rgba(255, 255, 255, 0.2) 100%);
+      }
+    }
+
+    @media(max-width:480px) {
+      .intro {
+        min-height: 260px;
+        background-position: 82% center;
+      }
+
+      .intro-headline {
+        font-size: clamp(28px, 8.5vw, 40px);
+      }
+    }
+
     /* ================= SECTION SHARED ================= */
     section {
       position: relative;
@@ -285,7 +329,7 @@
 
     /* videos sit right under the intro — keep the gap tight */
     #recipes.section-pad {
-      padding-top: clamp(24px, 4vw, 44px);
+      padding-top: clamp(28px, 4vw, 48px);
     }
 
     .eyebrow {
