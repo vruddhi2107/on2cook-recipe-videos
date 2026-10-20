@@ -362,9 +362,9 @@
       padding: var(--space-section) var(--pad-x);
     }
 
-    /* videos sit right under the intro — keep the gap tight */
+    /* videos sit right under the intro — zero top gap so cards peek */
     #recipes.section-pad {
-      padding-top: clamp(28px, 4vw, 48px);
+      padding-top: clamp(16px, 2.5vw, 28px);
     }
 
     .eyebrow {
@@ -870,15 +870,11 @@
 
   <!-- Heading + sub-heading, then the videos immediately below -->
   <header class="intro" id="top">
+    <div class="intro-eyebrow" aria-hidden="true"></div>
+    <p class="intro-label">ON2COOK VIDEO LIBRARY</p>
     <!-- id kept as heroHeadline so any existing script.js hooks on it keep working -->
-    <h1 class="intro-headline" id="heroHeadline">One device. Six ways to cook.</h1>
+    <h1 class="intro-headline" id="heroHeadline">One device. Six<br>ways to cook.</h1>
     <p class="intro-sub">Watch every function in action.</p>
-    <!-- bounce arrow — hints that videos are right below -->
-    <div class="intro-cue" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"/>
-      </svg>
-    </div>
   </header>
 
   <section class="section-pad" id="recipes">
