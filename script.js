@@ -65,54 +65,13 @@ function splitLines(el){
 }
 
 /* ================================================================
-   HERO
+   INTRO HEADLINE — word reveal on load
    ================================================================ */
 const heroWords = splitLines(document.getElementById('heroHeadline'));
-
-const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-heroTl
-  .set('.hero', { autoAlpha: 1 })
-  .from('.hero-eyebrow', { opacity: 0, y: 14, duration: 0.6 })
-  .from(heroWords, { yPercent: 130, duration: 1, stagger: 0.07 }, '-=0.3')
-  .from('.hero-sub', { opacity: 0, y: 16, duration: 0.7 }, '-=0.5')
-  .from('.hero-ctas .btn', { opacity: 0, y: 12, duration: 0.6, stagger: 0.08 }, '-=0.5')
-  .from('.hero-scrollcue', { opacity: 0, duration: 0.6 }, '-=0.3')
-  .from('.hero-visual-glow', { opacity: 0, scale: 0.7, duration: 1, ease: 'power2.out' }, '-=1.1')
-  .from('.hero-device-img', { opacity: 0, scale: 1.12, y: 50, duration: 1.2, ease: 'power3.out' }, '-=0.9')
-  .from('.hero-ring', { opacity: 0, scale: 0.5, duration: 0.9, ease: 'back.out(1.6)' }, '-=0.6')
-  .from('.hero-shape', { opacity: 0, scale: 0.6, duration: 1, stagger: 0.1, ease: 'back.out(1.6)' }, '-=1');
-
 if (!reduceMotion) {
-  gsap.to('.hero-shape.s1', { y: -30, x: 10, rotate: 12, duration: 4.5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.hero-shape.s3', { y: -18, x: -8, rotate: 8, duration: 3.8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-  gsap.to('.hero-ring', { y: 14, x: -6, duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
-  // gentle idle float on the (now larger) device, once its entrance is done
-  gsap.to('.hero-device-img', { y: -18, duration: 3.6, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.9 });
-
-  // rising steam wisps above the device
-  const steamEls = gsap.utils.toArray('.hero-steam');
-  steamEls.forEach((el, i) => {
-    gsap.timeline({ repeat: -1, delay: 1.4 + i * 0.9, repeatDelay: 0.4 })
-      .fromTo(el, { y: 0, opacity: 0, scaleY: 0.6 }, { y: -110, opacity: 0.5, scaleY: 1, duration: 2.4, ease: 'sine.out' })
-      .to(el, { opacity: 0, duration: 1, ease: 'sine.in' }, '-=0.6');
-  });
-
-  gsap.to('.hero-shape', {
-    yPercent: -40,
-    ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
-  });
-  gsap.to('.hero-visual', {
-    yPercent: -14,
-    ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
-  });
-  gsap.to('.hero-headline', {
-    yPercent: -20,
-    ease: 'none',
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
-  });
+  gsap.timeline({ defaults: { ease: 'power4.out' } })
+    .from(heroWords, { yPercent: 130, duration: 1, stagger: 0.07 })
+    .from('.intro-sub', { opacity: 0, y: 16, duration: 0.7 }, '-=0.5');
 }
 
 /* ================================================================
