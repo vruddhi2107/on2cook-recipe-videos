@@ -253,69 +253,104 @@
     }
 
     /* ================= INTRO (compact hero banner) =================
-       Keeps the hero photo, but short enough that the first row of video
-       thumbnails is visible without scrolling. */
+       Short enough that ~half a row of video thumbnails peeks below the fold,
+       signalling there's content immediately below. */
     .intro {
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      min-height: clamp(300px, 44vh, 420px);
-      padding: clamp(96px, 12vw, 120px) var(--pad-x) clamp(32px, 5vw, 52px);
+      /* ≈55–60 % of viewport — leaves roughly one card-row visible below */
+      height: clamp(260px, 58vh, 480px);
+      padding: clamp(80px, 10vw, 110px) var(--pad-x) clamp(24px, 4vw, 40px);
       background: url("assets/hero1.png") center center / cover no-repeat;
+      overflow: hidden;
     }
 
+    /* white gradient left → transparent right so text is legible */
     .intro::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 0;
       pointer-events: none;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.55) 45%, rgba(255, 255, 255, 0) 75%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.6) 42%, rgba(255, 255, 255, 0) 72%);
+    }
+
+    /* soft bottom fade so the hero bleeds gracefully into the cards */
+    .intro::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 100%);
     }
 
     .intro>* {
       position: relative;
-      z-index: 1;
-      max-width: 760px;
+      z-index: 2;
+      max-width: 700px;
     }
 
     .intro-headline {
-      font-size: clamp(32px, 5.4vw, 76px);
+      font-size: clamp(28px, 4.6vw, 64px);
       font-weight: 900;
       line-height: 1.04;
     }
 
     .intro-sub {
-      margin-top: 14px;
+      margin-top: 12px;
       font-family: 'Montserrat', system-ui, sans-serif;
-      font-size: clamp(16px, 2vw, 26px);
+      font-size: clamp(14px, 1.7vw, 22px);
       font-weight: 500;
       line-height: 1.35;
       color: var(--ink-muted);
       letter-spacing: -0.01em;
     }
 
+    /* small bounce-arrow at the bottom centre of the hero */
+    .intro-cue {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      animation: cue-bounce 1.8s ease-in-out infinite;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .intro-cue svg { width: 22px; height: 22px; }
+
+    @keyframes cue-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0);   opacity: 0.55; }
+      50%       { transform: translateX(-50%) translateY(6px); opacity: 0.85; }
+    }
+
     @media(max-width:900px) {
-      /* device sits in the right third of hero1.png — keep it in frame */
       .intro {
         background-position: 78% center;
+        height: clamp(220px, 52vh, 380px);
       }
-
       .intro::before {
-        background: linear-gradient(90deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.78) 52%, rgba(255, 255, 255, 0.2) 100%);
+        background: linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.82) 50%, rgba(255,255,255,0.25) 100%);
       }
     }
 
     @media(max-width:480px) {
       .intro {
-        min-height: 260px;
+        height: clamp(200px, 48vh, 300px);
         background-position: 82% center;
       }
-
-      .intro-headline {
-        font-size: clamp(28px, 8.5vw, 40px);
-      }
+      .intro-headline { font-size: clamp(24px, 7.5vw, 36px); }
+      .intro-cue { bottom: 10px; }
     }
 
     /* ================= SECTION SHARED ================= */
@@ -838,6 +873,12 @@
     <!-- id kept as heroHeadline so any existing script.js hooks on it keep working -->
     <h1 class="intro-headline" id="heroHeadline">One device. Six ways to cook.</h1>
     <p class="intro-sub">Watch every function in action.</p>
+    <!-- bounce arrow — hints that videos are right below -->
+    <div class="intro-cue" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"/>
+      </svg>
+    </div>
   </header>
 
   <section class="section-pad" id="recipes">
