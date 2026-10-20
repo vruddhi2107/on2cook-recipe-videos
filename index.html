@@ -105,56 +105,43 @@
       transform: scaleX(0);
     }
 
-    /* ---------------- nav : "dynamic island" ---------------- */
+    /* ---------------- nav : floating pill, aligned to page gutters ---------------- */
     nav {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      width: min(80vw, 1100px);
+      /* same left/right edge as the hero text and video grid */
+      width: calc(100% - 2 * var(--pad-x));
       z-index: 900;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 8px 18px 8px 22px;
+      padding: 8px 10px 8px 22px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.45);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
-      backdrop-filter: blur(16px) saturate(180%);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      border-bottom-color: rgba(0, 0, 0, 0.05);
-      box-shadow:
-        0 10px 30px -10px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+      /* near-opaque white: no grey wash from the hero image behind it */
+      background: rgba(255, 255, 255, 0.92);
+      -webkit-backdrop-filter: blur(14px) saturate(160%);
+      backdrop-filter: blur(14px) saturate(160%);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 28px -12px rgba(0, 0, 0, 0.18);
       transition:
         top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
         padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        background 0.4s ease,
         box-shadow 0.4s ease;
     }
 
     nav.scrolled {
-      top: 14px;
-      width: min(75vw, 980px);
-      padding: 6px 14px 6px 18px;
-      background: rgba(255, 255, 255, 0.65);
-      -webkit-backdrop-filter: blur(24px) saturate(200%);
-      backdrop-filter: blur(24px) saturate(200%);
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow:
-        0 14px 36px -8px rgba(0, 0, 0, 0.12),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+      top: 12px;
+      padding: 6px 8px 6px 20px;
+      box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.24);
     }
 
     @media (max-width: 600px) {
       nav {
-        width: 92vw;
-      }
-
-      nav.scrolled {
-        width: 90vw;
+        top: 12px;
+        padding: 6px 8px 6px 16px;
       }
     }
 
@@ -165,7 +152,7 @@
     }
 
     .logo-img {
-      height: 40px;
+      height: 38px;
       width: auto;
       object-fit: contain;
       transition: height 0.4s ease;
@@ -173,6 +160,10 @@
 
     nav.scrolled .logo-img {
       height: 32px;
+    }
+
+    .nav-links:empty {
+      display: none;
     }
 
     .nav-links {
@@ -188,7 +179,8 @@
       font-weight: 600;
       background: var(--red);
       color: #fff;
-      padding: 8px 18px;
+      padding: 11px 22px;
+      line-height: 1;
       border-radius: 999px;
       text-decoration: none;
       white-space: nowrap;
@@ -208,15 +200,9 @@
     }
 
     @media(max-width:420px) {
-      nav {
-        top: 12px;
-        width: 94vw;
-        padding: 8px 10px 8px 14px;
-      }
-
       .nav-cta {
         font-size: 12px;
-        padding: 8px 16px;
+        padding: 10px 16px;
       }
     }
 
@@ -300,6 +286,30 @@
       font-size: clamp(28px, 4.6vw, 64px);
       font-weight: 900;
       line-height: 1.04;
+    }
+
+    .intro-headline .hl {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .intro-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    .intro-label::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--red);
     }
 
     .intro-sub {
@@ -387,10 +397,27 @@
     }
 
     /* ================= RECIPES ================= */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head h2 {
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
     .recipe-count {
-      font-size: 13px;
+      font-size: 14px;
+      font-weight: 500;
       color: var(--ink-muted);
-      margin-bottom: 20px;
+      white-space: nowrap;
     }
 
     /* shown by deeplinks.js when a function link like #frying is opened */
@@ -425,16 +452,25 @@
     .r-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 22px;
+      gap: 24px;
+      align-items: stretch;
     }
 
     .r-card {
-      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
       overflow: hidden;
       background: #fff;
       border: 1px solid var(--line);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 20px -14px rgba(0, 0, 0, 0.15);
       cursor: pointer;
       transition: transform .35s cubic-bezier(.2, .7, .3, 1), box-shadow .35s ease;
+    }
+
+    .r-card:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 3px;
     }
 
     .r-card:hover {
@@ -448,6 +484,27 @@
       background-position: center;
       position: relative;
       background-color: var(--bg-soft);
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* always-visible play badge (hover overlay alone is invisible on touch screens) */
+    .r-media::after {
+      content: "";
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M8 5v14l11-7z'/%3E%3C/svg%3E") 54% 50% / 18px no-repeat;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .r-card:hover .r-media::after {
+      opacity: 0;
+      transform: scale(0.8);
     }
 
     .r-media-fallback {
@@ -481,7 +538,10 @@
     }
 
     .r-body {
-      padding: 18px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 18px 20px 20px;
     }
 
     .r-fn {
@@ -501,6 +561,7 @@
     }
 
     .r-meta {
+      margin-top: auto;
       display: flex;
       justify-content: space-between;
       font-size: 12px;
@@ -873,13 +934,16 @@
     <div class="intro-eyebrow" aria-hidden="true"></div>
     <p class="intro-label">ON2COOK VIDEO LIBRARY</p>
     <!-- id kept as heroHeadline so any existing script.js hooks on it keep working -->
-    <h1 class="intro-headline" id="heroHeadline">One device. Six<br>ways to cook.</h1>
+    <h1 class="intro-headline" id="heroHeadline"><span class="hl">One device.</span> <span class="hl">Six ways to cook.</span></h1>
     <p class="intro-sub">Watch every function in action.</p>
   </header>
 
   <section class="section-pad" id="recipes">
     <div class="fn-filter-bar" id="fnFilterBar"></div>
-    <p class="recipe-count" id="recipeCount"></p>
+    <div class="section-head">
+      <h2>All videos</h2>
+      <p class="recipe-count" id="recipeCount"></p>
+    </div>
     <div class="r-grid" id="recipeGrid"></div>
   </section>
 
